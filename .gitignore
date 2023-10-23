@@ -1,0 +1,6 @@
+*.Rhistory
+
+mapchartSave__*
+test_*
+
+README.html

@@ -1,0 +1,22 @@
+# Path to the input json
+input_file_path: "mapchartSave__europe_nuts3__.txt"
+
+# Chart title
+chart_title: "Aufteilung Deutschlands in acht Bundesländer"
+
+# Label for the type of geographical group
+group_type: "Bundesland"
+
+# Year for which the data is shown in the format "2018-01-01", "auto-select" picks the most recent year
+# (default: "auto-select")
+data_of_year: "auto-select" 
+
+# Output chart dimensions (default: [1080, 1080])
+chart_size: [1080, 1080]
+
+# Output chart text size (default: 20)
+text_size: 20
+
+# Output chart path, e.g.: "/charts/map". Chart format is .png and automatically appended.
+# Default: Working directory/"chart"
+output_file_path: "example-chart-2"
