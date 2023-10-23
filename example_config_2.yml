@@ -2,10 +2,10 @@
 input_file_path: "mapchartSave__europe_nuts3__.txt"
 
 # Chart title
-chart_title: "Aufteilung Deutschlands in acht Bundesländer"
+chart_title: "Hypothetical division of Germany into eight states"
 
 # Label for the type of geographical group
-group_type: "Bundesland"
+group_type: "State"
 
 # Year for which the data is shown in the format "2018-01-01", "auto-select" picks the most recent year
 # (default: "auto-select")

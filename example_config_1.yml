@@ -2,7 +2,7 @@
 input_file_path: "mapchartSave__europe_nuts2__.txt"
 
 # Chart title
-chart_title: "Western Mediterranian"
+chart_title: "Western Mediterranean"
 
 # Label for the type of geographical group
 group_type: "Coastal area"
