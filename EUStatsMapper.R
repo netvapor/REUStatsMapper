@@ -1,5 +1,5 @@
 # Project: REUStatsMapper
-# Version: 1.0.0
+# Version: 1.0.1
 # License: GPL-3
 # Copyright (c) 2022 netvapor
 # URL: github.com/netvapor/REUStatsMapper
