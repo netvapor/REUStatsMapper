@@ -62,28 +62,29 @@ if (nchar(group_raw[2]) == 5) {
 
 population = get_eurostat(id = "demo_r_pjangrp3")
 gdp = get_eurostat(id = "nama_10r_3gdp")
-eurogeo = get_eurostat_geospatial(nuts_level = as.numeric(NUTS_level))
+eurogeo = get_eurostat_geospatial(nuts_level = as.numeric(NUTS_level),
+                                  resolution = "01")
 
 population = population %>%
   filter(sex == "T", age == "TOTAL") %>%
   filter(nchar(geo) == as.numeric(NUTS_level) + 2) %>%
-  dplyr::select(geo, values, time) %>% rename(Population = values)
+  dplyr::select(geo, values, TIME_PERIOD) %>% rename(Population = values)
 gdp = gdp %>%
   filter(nchar(geo) == as.numeric(NUTS_level) + 2) %>%
   filter(unit == "MIO_EUR") %>%
-  dplyr::select(geo, values, time) %>% rename(GDP = values)
+  dplyr::select(geo, values, TIME_PERIOD) %>% rename(GDP = values)
 
-merged_stats = merge(population, gdp, by = c("geo", "time"))
+merged_stats = merge(population, gdp, by = c("geo", "TIME_PERIOD"))
 merged_stats_labelled = merge(merged_stats, nuts_groups_df, by = "geo")
 
 if (data_of_year == "auto-select") {
-  total = merged_stats_labelled %>% group_by(time) %>% count(time, sort = TRUE)
+  total = merged_stats_labelled %>% group_by(TIME_PERIOD) %>% count(TIME_PERIOD, sort = TRUE)
   max_count = max(total$n)
-  total = total %>% filter(n == max_count) %>% arrange(desc(time))
-  data_of_year = total$time[1]
+  total = total %>% filter(n == max_count) %>% arrange(desc(TIME_PERIOD))
+  data_of_year = total$TIME_PERIOD[1]
 }
 
-merged_stats_labelled = merged_stats_labelled %>% filter(time == data_of_year)
+merged_stats_labelled = merged_stats_labelled %>% filter(TIME_PERIOD == data_of_year)
 mapdata = eurogeo %>% right_join(merged_stats_labelled)
 mapdata$NUTS_group <-
   factor(mapdata$NUTS_group, levels = unique(nuts_groups_df$NUTS_group))
